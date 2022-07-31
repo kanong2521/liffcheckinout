@@ -35,9 +35,9 @@ var hh = today.getHours();
 var mm = today.getMinutes(); 
 
         if(hh <= 23 && mm >= 9 ){
-          document.getElementById("cin").classList.remove('invisible');
+          document.getElementById("cin").classList.remove('visible');
         }else if(<=23 && mm >= 15){
-          document.getElementById("cout").classList.remove('invisible');
+          document.getElementById("cout").classList.remove('visible');
             }else{
 alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
 liff.closeWindow();  
