@@ -36,7 +36,7 @@ var mm = today.getMinutes();
 
         if(hh = 23 && mm >= 15 ){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh = 23 && mm >= 30){
+        }else if(hh = 23 && mm >= 40){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
@@ -73,13 +73,15 @@ function showPosition(position) {
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
+        var email = liff.getDecodedIDToken().email;
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
   "<br>userId: " + uid+ 
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
+  "<br>your Email: " + email;      
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -107,16 +109,18 @@ function getLocationOut() {
 function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
-            var uid = profile.userId;
-            var uname = profile.displayName;
+        var uid = profile.userId;
+        var uname = profile.displayName;
         var xos = liff.getOS();
+        var email = liff.getDecodedIDToken().email;
   x.innerHTML = "Lat: " + position.coords.latitude + 
   "<br>Long: " + position.coords.longitude+ 
   "<br>userId: " + uid+ 
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
+  "<br>your Email: " + email;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
