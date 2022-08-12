@@ -18,7 +18,7 @@
   <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
 </div>
 <p id="demo"></p>
-   <h4> ทดสอบ 2 </h4>
+   <h4> ทดสอบ 3 </h4>
 </center>
 
 <script>
@@ -46,6 +46,12 @@ var x = document.getElementById("demo");
  function getLocationIn() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+        liff.sendMessages([
+              {
+              "type": "text",
+              "text": "สรุปผลวิ่ง"
+             }
+          ])       
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -71,12 +77,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);+
-        liff.sendMessages([
-              {
-              "type": "text",
-              "text": "สรุปผลวิ่ง"
-             }
-          ])     
+  
         }
         alert(jsonResponse.desc);
         liff.closeWindow();
@@ -91,6 +92,12 @@ var xmlhttp = new XMLHttpRequest();
 function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
+            liff.sendMessages([
+              {
+              "type": "text",
+              "text": "สรุปผลวิ่ง"
+             }
+          ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -115,12 +122,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-        liff.sendMessages([
-              {
-              "type": "text",
-              "text": "สรุปผลวิ่ง"
-             }
-          ])
+
            }
         alert(jsonResponse.desc);
         liff.closeWindow();
