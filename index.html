@@ -13,11 +13,12 @@
   <body>
     <center>
     <h1>Check-In/Out Log</h1>
-<p>Click the button to check-in or check-out with your coordinates.</p>
-<!-- <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
-<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div> -->
-<div id="cin" class="invisible" ><button type="button" class="btn btn-success" onclick="getLocationin()">Check-In</button></div>
-<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>      
+<div class="btn-group col-12 mb-2">      
+<!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
+  <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
+  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2" onclick="getLocationin()">Check-In</button>
+  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
+</div>   
 
 <p id="demo"></p>
 </center>
@@ -71,12 +72,12 @@ var x = document.getElementById("demo");
  function getLocationin() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-       liff.sendMessages([
-      {
-        "type": "text",
-        "text": "สรุปผลวิ่ง"
-      }
-    ])
+//        liff.sendMessages([
+//       {
+//         "type": "text",
+//         "text": "สรุปผลวิ่ง"
+//       }
+//     ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -153,7 +154,7 @@ async function sendMsg() {
     await liff.sendMessages([
       {
         "type": "text",
-        "text": "This message was sent by sendMessages()"
+        "text": "สรุปผลวิ่ง"
       }
     ])
     alert("Message sent")
