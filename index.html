@@ -115,7 +115,7 @@ function getLocationOut() {
   }
 }
 
-function showPositionOut(position) {
+async function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
@@ -135,6 +135,16 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
+           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+             await liff.sendMessages([
+               {
+               "type": "text",
+               "text": "สรุปผลวิ่ง"
+                }
+               ])
+    alert("Message sent")
+      }
+      }
         }
         alert(jsonResponse.desc);
         liff.closeWindow();
