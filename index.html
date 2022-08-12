@@ -16,8 +16,8 @@
 <div class="btn-group col-12 mb-2">      
 <!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
   <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
-  <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
-  <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>
+  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2" onclick="getLocationIn()">Check-In</button>
+  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
 </div>
 <p id="demo"></p>
 </center>
@@ -68,7 +68,7 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
- function getLocationin() {
+ function getLocationIn() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else { 
@@ -167,3 +167,17 @@ async function sendMsg() {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   </html>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
