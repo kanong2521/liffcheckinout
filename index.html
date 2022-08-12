@@ -50,7 +50,7 @@ var x = document.getElementById("demo");
   }
 }
 
-async function showPosition(position) {
+ function showPosition(position) {
 
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -88,8 +88,7 @@ function getLocationOut() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-
-aync function showPositionOut(position) {
+function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
