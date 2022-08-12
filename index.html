@@ -73,6 +73,7 @@ var x = document.getElementById("demo");
  function getLocationin() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+            sendMsg()    
 //        liff.sendMessages([
 //       {
 //         "type": "text",
@@ -107,7 +108,7 @@ var xmlhttp = new XMLHttpRequest();
          
         }
         alert(jsonResponse.desc);
-        sendMsg()      
+  
         liff.closeWindow();
       }});  
 }
@@ -120,6 +121,7 @@ var xmlhttp = new XMLHttpRequest();
 function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
+            sendMsg()    
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -148,7 +150,7 @@ var xmlhttp = new XMLHttpRequest();
 
            }
         alert(jsonResponse.desc);
-        sendMsg()       
+  
         liff.closeWindow();
       }});  
 }
