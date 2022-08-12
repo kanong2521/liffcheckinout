@@ -21,6 +21,7 @@
 </div>   
 
 <p id="demo"></p>
+      <h4>ทดสอบ 1 </h4>      
 </center>
 
 <script>
@@ -103,9 +104,10 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg()
+         
         }
         alert(jsonResponse.desc);
+        sendMsg()      
         liff.closeWindow();
       }});  
 }
@@ -143,9 +145,10 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg()
+
            }
         alert(jsonResponse.desc);
+        sendMsg()       
         liff.closeWindow();
       }});  
 }
