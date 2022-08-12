@@ -68,9 +68,15 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
-function getLocation() {
+async function getLocationin() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+        await liff.sendMessages([
+      {
+        "type": "text",
+        "text": "สรุปผลวิ่ง"
+      }
+    ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -107,15 +113,21 @@ var xmlhttp = new XMLHttpRequest();
 ///////////////////////////////
 
 
-function getLocationOut() {
+async function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
+        await liff.sendMessages([
+      {
+        "type": "text",
+        "text": "สรุปผลวิ่ง"
+      }
+    ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
-async function showPositionOut(position) {
+function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
