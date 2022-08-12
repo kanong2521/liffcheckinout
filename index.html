@@ -16,7 +16,7 @@
 <p>Click the button to check-in or check-out with your coordinates.</p>
 <!-- <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div> -->
-<div id="cin" class="invisible" ><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
+<div id="cin" class="invisible" ><button type="button" class="btn btn-success" onclick="getLocationin()">Check-In</button></div>
 <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>      
 
 <p id="demo"></p>
@@ -68,10 +68,10 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
-async function getLocationin() {
+ function getLocationin() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-        await liff.sendMessages([
+       liff.sendMessages([
       {
         "type": "text",
         "text": "สรุปผลวิ่ง"
@@ -102,6 +102,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
+          sendMsg()
         }
         alert(jsonResponse.desc);
         liff.closeWindow();
@@ -113,15 +114,9 @@ var xmlhttp = new XMLHttpRequest();
 ///////////////////////////////
 
 
-async function getLocationOut() {
+function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
-        await liff.sendMessages([
-      {
-        "type": "text",
-        "text": "สรุปผลวิ่ง"
-      }
-    ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -147,13 +142,23 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          
+          sendMsg()
            }
         alert(jsonResponse.desc);
         liff.closeWindow();
       }});  
 }
-
+async function sendMsg() {
+  if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+    await liff.sendMessages([
+      {
+        "type": "text",
+        "text": "This message was sent by sendMessages()"
+      }
+    ])
+    alert("Message sent")
+  }
+}
 
 
 </script>
