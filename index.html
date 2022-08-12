@@ -154,24 +154,8 @@ var xmlhttp = new XMLHttpRequest();
                 showConfirmButton: false,
                 timer: 1500
               })
-           }else{
-                Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'บันทึกไม่สำเร็จของ '+uname,
-                showConfirmButton: false,
-                timer: 1500
-              })
-           }
 //         alert(jsonResponse.desc);
-        Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'บันทึกเรียบร้อยของ '+jsonResponse,
-                showConfirmButton: false,
-                timer: 1500
-              })
-  
+ 
         liff.closeWindow();
       }});  
 }
