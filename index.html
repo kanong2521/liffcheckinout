@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 7 </h4>      
+      <h4>ทดสอบ 8 </h4>      
 </center>
 
 <script>
@@ -164,7 +164,13 @@ var xmlhttp = new XMLHttpRequest();
               })
            }
 //         alert(jsonResponse.desc);
-
+        Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'บันทึกเรียบร้อยของ '+jsonResponse,
+                showConfirmButton: false,
+                timer: 1500
+              })
   
         liff.closeWindow();
       }});  
