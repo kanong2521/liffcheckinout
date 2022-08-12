@@ -138,19 +138,6 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-function sendMsg() {
-  if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-      liff.sendMessages([
-      {
-        "type": "text",
-        "text": "สรุปผลวิ่ง"
-      }
-    ])
-//     alert("Message sent")
-  }
-}
-
-
 </script>
 
 
