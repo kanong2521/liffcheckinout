@@ -74,7 +74,7 @@ var x = document.getElementById("demo");
   }
 }
 
-function showPosition(position) {
+async function showPosition(position) {
 
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -94,7 +94,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg()
+         await sendMsg()
         }
         alert(jsonResponse.desc);
         liff.closeWindow();
@@ -114,7 +114,7 @@ function getLocationOut() {
   }
 }
 
-function showPositionOut(position) {
+aync function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
@@ -134,15 +134,15 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg()
+          await sendMsg()
            }
         alert(jsonResponse.desc);
         liff.closeWindow();
       }});  
 }
-async function sendMsg() {
+function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-    await liff.sendMessages([
+      liff.sendMessages([
       {
         "type": "text",
         "text": "สรุปผลวิ่ง"
