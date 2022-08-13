@@ -21,24 +21,18 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 12 </h4>      
+      <h4>ทดสอบ 11 </h4>      
 </center>
 
 <script>
 window.onload = function() {
   initializeLiff('1657347394-mzWnoBaW');
 }
-  
 
 const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
 
-// var today1 = new Date(); 
-// var today2 = new Date(); 
-// today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-// var hh = today1.getHours();
-// var mm = today1.getMinutes();   
-  
 function checks(){
+
 var today = new Date();
 today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
@@ -86,10 +80,7 @@ async function getLocationin() {
 }
 
 function showPosition(position) {
-var today1 = new Date();
-today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-var hh = today.getHours();
-var mm = today.getMinutes();   
+
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -131,7 +122,7 @@ async function getLocationOut() {
 }
 
 function showPositionOut(position) {
-var today2 = new Date();
+
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -159,262 +150,10 @@ var xmlhttp = new XMLHttpRequest();
 async function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
-{
-  "type": "bubble",
-  "size": "mega",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "บันทึกการเข้าปฏิบัติการ",
-            "color": "#ffffff66",
-            "size": "sm"
-          },
-          {
-            "type": "text",
-            "text": "PA1 Lab",
-            "color": "#ffffff",
-            "size": "xl",
-            "flex": 4,
-            "weight": "bold"
-          }
-        ]
-      },
       {
         "type": "text",
-        "text": "email",
-        "color": "#FEFCFC",
-        "offsetBottom": "2px"
+        "text": "บันทึกสำเร็จ"
       }
-    ],
-    "paddingAll": "20px",
-    "backgroundColor": "#0367D3",
-    "spacing": "md",
-    "height": "100px",
-    "paddingTop": "22px"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "รายละเอียดการบันทึก",
-        "color": "#b7b7b7",
-        "size": "xs"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": "20:30",
-            "size": "sm",
-            "gravity": "center"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "height": "12px",
-                "width": "12px",
-                "borderWidth": "2px",
-                "borderColor": "#0000ff"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0,
-            "borderColor": "#088F8F"
-          },
-          {
-            "type": "text",
-            "text": "บันทึกเข้าปฏิบัติการ",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px",
-        "margin": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "2px",
-                    "backgroundColor": "#0000ff"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "flex": 1
-              }
-            ],
-            "width": "12px"
-          },
-          {
-            "type": "text",
-            "text": "วันและเวลาเข้า",
-            "gravity": "center",
-            "flex": 4,
-            "size": "xs",
-            "color": "#8c8c8c"
-          }
-        ],
-        "spacing": "lg",
-        "height": "64px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "text",
-                "text": "20:34",
-                "gravity": "center",
-                "size": "sm"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "width": "12px",
-                "height": "12px",
-                "borderWidth": "3px",
-                "borderColor": "#ff0000"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0
-          },
-          {
-            "type": "text",
-            "text": "บันทึกออกปฏิบัติการ",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "2px",
-                    "backgroundColor": "#ff0000"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "flex": 1
-              }
-            ],
-            "width": "12px"
-          },
-          {
-            "type": "text",
-            "text": "สะรแบะเสบ่",
-            "gravity": "center",
-            "flex": 4,
-            "size": "xs",
-            "color": "#8c8c8c"
-          }
-        ],
-        "spacing": "lg",
-        "height": "64px"
-      }
-    ]
-  }
-}
     ])
 //     alert("Message sent")
   }
