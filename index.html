@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 28 </h4>      
+      <h4>ทดสอบ 29 </h4>      
 </center>
 
 <script>
@@ -56,8 +56,8 @@ var mm = today.getMinutes();
 }
 
 
-async function initializeLiff(myLiffId) {
-    await liff
+function initializeLiff(myLiffId) {
+    liff
         .init({
             liffId: myLiffId
         })
@@ -81,7 +81,7 @@ function getLocationin() {
 
 async function showPosition(position) {
 
- await liff.getProfile().then(function(profile) {
+ liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
@@ -121,7 +121,7 @@ function getLocationOut() {
 }
 
 async function showPositionOut(position) {
-     await liff.getProfile().then(function(profile) {
+     liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
         var xos = liff.getOS();
