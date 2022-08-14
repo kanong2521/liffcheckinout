@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 16 </h4>      
+      <h4>ทดสอบ 17 </h4>      
 </center>
 
 <script>
@@ -73,7 +73,7 @@ var x = document.getElementById("demo");
 async function getLocationin() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPosition);
-         await sendMsg()
+//          await sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -115,13 +115,13 @@ function showPosition(position) {
 async function getLocationOut() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPositionOut);
-        await sendMsg()    
+//         await sendMsg()    
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
-function showPositionOut(position) {
+async function showPositionOut(position) {
 
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
@@ -141,41 +141,68 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
+                    if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+                      await liff.sendMessages([
+                  {
+                    "type": "flex",
+                    "altText": "this is a flex message",
+                    "contents": {
+                      "type": "bubble",
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": email,
+                          },
+                          {
+                            "type": "text",
+                            "text": uname,
+                          }
+                        ]
+                      }
+                    }
+                  }
+                      ])
+                  //     alert("Message sent")
+                    }
+
             }
         alert(jsonResponse.desc);
  
         liff.closeWindow();
       }});  
 }
-async function sendMsg() {
-  if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-    await liff.sendMessages([
-{
-  "type": "flex",
-  "altText": "this is a flex message",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": email,
-        },
-        {
-          "type": "text",
-          "text": uname,
-        }
-      ]
-    }
-  }
-}
+// async function sendMsg() {
+//   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+//     await liff.sendMessages([
+// {
+//   "type": "flex",
+//   "altText": "this is a flex message",
+//   "contents": {
+//     "type": "bubble",
+//     "body": {
+//       "type": "box",
+//       "layout": "vertical",
+//       "contents": [
+//         {
+//           "type": "text",
+//           "text": email,
+//         },
+//         {
+//           "type": "text",
+//           "text": uname,
+//         }
+//       ]
+//     }
+//   }
+// }
       
-    ])
-//     alert("Message sent")
-  }
-}
+//     ])
+// //     alert("Message sent")
+//   }
+// }
 
 
 </script>
