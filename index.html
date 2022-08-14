@@ -73,7 +73,284 @@ var x = document.getElementById("demo");
 async function getLocationin() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPosition);
-            sendMsg()    
+      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+          await liff.sendMessages([
+                  {
+                    "type": "flex",
+                    "altText": "Running",
+                    "contents": 
+                    {
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "บันทึกการเข้าปฏิบัติการ",
+            "color": "#ffffff66",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "PA1 Lab",
+            "color": "#ffffff",
+            "size": "xl",
+            "flex": 4,
+            "weight": "bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "email",
+        "color": "#FEFCFC",
+        "offsetBottom": "2px"
+      }
+    ],
+    "paddingAll": "20px",
+    "backgroundColor": "#0367D3",
+    "spacing": "md",
+    "height": "100px",
+    "paddingTop": "22px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "รายละเอียดการบันทึก",
+        "color": "#b7b7b7",
+        "size": "xs"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "yourtime",
+            "size": "sm",
+            "gravity": "center",
+            "margin": "none",
+            "maxLines": 1
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "filler"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "cornerRadius": "30px",
+                "height": "12px",
+                "width": "12px",
+                "borderWidth": "2px",
+                "borderColor": "#0000ff"
+              },
+              {
+                "type": "filler"
+              }
+            ],
+            "flex": 0,
+            "borderColor": "#088F8F",
+            "offsetStart": "10%"
+          },
+          {
+            "type": "text",
+            "text": "บันทึกเข้าปฏิบัติการ",
+            "gravity": "center",
+            "flex": 4,
+            "size": "sm",
+            "offsetStart": "13%"
+          }
+        ],
+        "spacing": "lg",
+        "cornerRadius": "30px",
+        "margin": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "filler"
+              }
+            ],
+            "flex": 1
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "width": "2px",
+                    "backgroundColor": "#0000ff"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "flex": 1,
+                "spacing": "none",
+                "margin": "none"
+              }
+            ],
+            "width": "12px"
+          },
+          {
+            "type": "text",
+            "text": "yourdate",
+            "gravity": "center",
+            "flex": 4,
+            "size": "xs",
+            "color": "#8c8c8c"
+          }
+        ],
+        "spacing": "lg",
+        "height": "64px",
+        "offsetStart": "10%"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "20:34",
+                "gravity": "center",
+                "size": "sm"
+              }
+            ],
+            "flex": 1
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "filler"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [],
+                "cornerRadius": "30px",
+                "width": "12px",
+                "height": "12px",
+                "borderWidth": "3px",
+                "borderColor": "#ff0000"
+              },
+              {
+                "type": "filler"
+              }
+            ],
+            "flex": 0,
+            "offsetStart": "10%"
+          },
+          {
+            "type": "text",
+            "text": "บันทึกออกปฏิบัติการ",
+            "gravity": "center",
+            "flex": 4,
+            "size": "sm",
+            "offsetStart": "13%"
+          }
+        ],
+        "spacing": "lg",
+        "cornerRadius": "30px"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "filler"
+              }
+            ],
+            "flex": 1
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [],
+                    "width": "2px",
+                    "backgroundColor": "#ff0000"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "flex": 1
+              }
+            ],
+            "width": "12px"
+          },
+          {
+            "type": "text",
+            "text": "สะรแบะเสบ่",
+            "gravity": "center",
+            "flex": 4,
+            "size": "xs",
+            "color": "#8c8c8c"
+          }
+        ],
+        "spacing": "lg",
+        "height": "64px",
+        "offsetStart": "10%"
+      }
+    ]
+  }
+}
+                    
+                   {  
+            
+           ])
+            //     alert("Message sent")
+             }
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -92,11 +369,11 @@ function showPosition(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos+
   "<br>your Email: " + email;      
-var xmlhttp = new XMLHttpRequest();
+        var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-            xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
          
@@ -147,17 +424,17 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-async function sendMsg() {
-  if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-    await liff.sendMessages([
-      {
-        "type": "text",
-        "text": "บันทึกสำเร็จ"
-      }
-    ])
-//     alert("Message sent")
-  }
-}
+// async function sendMsg() {
+//   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+//     await liff.sendMessages([
+//       {
+//         "type": "text",
+//         "text": "บันทึกสำเร็จ"
+//       }
+//     ])
+// //     alert("Message sent")
+//   }
+// }
 
 
 </script>
