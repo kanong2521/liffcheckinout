@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 15 </h4>      
+      <h4>ทดสอบ 16 </h4>      
 </center>
 
 <script>
@@ -73,7 +73,7 @@ var x = document.getElementById("demo");
 async function getLocationin() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPosition);
-         sendMsg()
+         await sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -115,7 +115,7 @@ function showPosition(position) {
 async function getLocationOut() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPositionOut);
-            sendMsg()    
+        await sendMsg()    
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -161,11 +161,11 @@ async function sendMsg() {
       "contents": [
         {
           "type": "text",
-          "text": "hello"
+          "text": email,
         },
         {
           "type": "text",
-          "text": "world"
+          "text": uname,
         }
       ]
     }
