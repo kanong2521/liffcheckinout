@@ -56,8 +56,8 @@ var mm = today.getMinutes();
 }
 
 
-function initializeLiff(myLiffId) {
-    liff
+async function initializeLiff(myLiffId) {
+    await liff
         .init({
             liffId: myLiffId
         })
