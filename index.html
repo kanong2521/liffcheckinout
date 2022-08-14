@@ -152,10 +152,11 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-        async function sendMsgin(email,uname,date,time) {
+  async function sendMsgin(uname,date,time) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
-            "type": "flex",
+           { 
+"type": "flex",
           "altText": "Menu",
           "contents": {            
     "type": "bubble",
@@ -358,7 +359,7 @@ var xmlhttp = new XMLHttpRequest();
     ]
   }
 }
-
+     }
             ])
         //     alert("Message sent")
           }
