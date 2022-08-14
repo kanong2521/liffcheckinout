@@ -155,8 +155,10 @@ var xmlhttp = new XMLHttpRequest();
         async function sendMsgin(email,uname,date,time) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
-        {
-  "type": "bubble",
+            "type": "flex",
+          "altText": "Menu",
+          "contents": {            
+    "type": "bubble",
   "size": "mega",
   "header": {
     "type": "box",
