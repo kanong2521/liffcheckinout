@@ -102,12 +102,11 @@ function showPosition(position) {
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);
-                   sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)
+          var jsonResponse = JSON.parse(this.responseText);
         }
-        alert(jsonResponse.desc);
-  
-        liff.closeWindow();
+        await sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)  
+        alert(jsonResponse.desc);  
+        await liff.closeWindow();
       }});  
 }
 
@@ -145,11 +144,10 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc) 
            }
-        alert(jsonResponse.desc);
- 
-        liff.closeWindow();
+        await sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)           
+        alert(jsonResponse.desc); 
+        awiat liff.closeWindow();
       }});  
 }
   async function sendMsgin(uname,date,time,desc) {
@@ -157,7 +155,7 @@ var xmlhttp = new XMLHttpRequest();
             await liff.sendMessages([
            { 
 "type": "flex",
-          "altText": "สรุปผลวิ่ง",
+          "altText": "Menu",
           "contents": {            
     "type": "bubble",
   "size": "mega",
@@ -370,7 +368,7 @@ var xmlhttp = new XMLHttpRequest();
             await liff.sendMessages([
                          { 
           "type": "flex",
-          "altText": "สรุปผลวิ่ง",
+          "altText": "Menu",
           "contents": {            
     "type": "bubble",
   "size": "mega",
