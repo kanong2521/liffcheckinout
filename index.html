@@ -74,16 +74,16 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
-async function getLocationin() {
+function getLocationin() {
   if (navigator.geolocation) {
-   await navigator.geolocation.getCurrentPosition(showPosition);
+   navigator.geolocation.getCurrentPosition(showPosition);
 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
-function showPosition(position) {
+async function showPosition(position) {
 
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -115,9 +115,9 @@ function showPosition(position) {
 ///////////////////////////////
 
 
-async function getLocationOut() {
+function getLocationOut() {
   if (navigator.geolocation) {
-   await navigator.geolocation.getCurrentPosition(showPositionOut);
+   navigator.geolocation.getCurrentPosition(showPositionOut);
             
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
@@ -125,7 +125,6 @@ async function getLocationOut() {
 }
 
 async function showPositionOut(position) {
-
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -147,7 +146,7 @@ var xmlhttp = new XMLHttpRequest();
            }
         await sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)           
         alert(jsonResponse.desc); 
-        awiat liff.closeWindow();
+        await liff.closeWindow();
       }});  
 }
   async function sendMsgin(uname,date,time,desc) {
