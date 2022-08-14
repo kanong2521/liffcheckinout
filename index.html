@@ -145,7 +145,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsgout(email,uname) 
+          sendMsgout(email,uname,jsonResponse.desc) 
            }
         alert(jsonResponse.desc);
  
@@ -431,7 +431,7 @@ var xmlhttp = new XMLHttpRequest();
           }
         }
 
-  async function sendMsgout(email,uname) {
+  async function sendMsgout(email,uname,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
         {
@@ -689,7 +689,7 @@ var xmlhttp = new XMLHttpRequest();
           },
           {
             "type": "text",
-            "text": "สะรแบะเสบ่",
+            "text": desc,
             "gravity": "center",
             "flex": 4,
             "size": "xs",
