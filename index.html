@@ -30,7 +30,10 @@ window.onload = function() {
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
-
+var today = new Date();
+today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+var hh = today.getHours();
+var mm = today.getMinutes(); 
 function checks(){
 
 var today = new Date();
@@ -161,11 +164,11 @@ var xmlhttp = new XMLHttpRequest();
               "contents": [
                 {
                   "type": "text",
-                  "text": email,
+                  "text": today,
                 },
                 {
                   "type": "text",
-                  "text": uname,
+                  "text": hh+":"mm,
                 }
               ]
             }
