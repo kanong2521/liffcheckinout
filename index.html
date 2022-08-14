@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 14 </h4>      
+      <h4>ทดสอบ 15 </h4>      
 </center>
 
 <script>
@@ -151,37 +151,24 @@ async function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
 {
-  "type": "bubble",
-  "direction": "ltr",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": "REFERENCE BOX\n1\n2\n3",
-            "align": "center",
-            "wrap": true
-          }
-        ],
-        "backgroundColor": "#80ffff"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": "TARGET"
-          }
-        ],
-        "backgroundColor": "#ff8080"
-      }
-    ]
+  "type": "flex",
+  "altText": "this is a flex message",
+  "contents": {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "hello"
+        },
+        {
+          "type": "text",
+          "text": "world"
+        }
+      ]
+    }
   }
 }
       
