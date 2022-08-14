@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 22 </h4>      
+      <h4>ทดสอบ 23 </h4>      
 </center>
 
 <script>
@@ -103,7 +103,7 @@ function showPosition(position) {
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-                   sendMsgin(uname,jsonResponse.date,jsonResponse.time)
+                   sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)
         }
         alert(jsonResponse.desc);
   
@@ -145,14 +145,14 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsgout(email,uname,jsonResponse.desc,jsonResponse.date) 
+          sendMsgout(email,uname,jsonResponse.desc,jsonResponse.date,jsonResponse.time) 
            }
         alert(jsonResponse.desc);
  
         liff.closeWindow();
       }});  
 }
-  async function sendMsgin(uname,date,time) {
+  async function sendMsgin(uname,date,time,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
            { 
@@ -171,7 +171,7 @@ var xmlhttp = new XMLHttpRequest();
         "contents": [
           {
             "type": "text",
-            "text": "Check-In",
+            "text": desc,
             "color": "#ffffff66",
             "size": "sm"
           },
@@ -365,14 +365,14 @@ var xmlhttp = new XMLHttpRequest();
           }
         }
 
-  async function sendMsgout(email,uname,desc,date) {
+  async function sendMsgout(uname,date,desc,time) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
-        {
+                         { 
           "type": "flex",
           "altText": "Menu",
-          "contents": {
-  "type": "bubble",
+          "contents": {            
+    "type": "bubble",
   "size": "mega",
   "header": {
     "type": "box",
@@ -384,7 +384,7 @@ var xmlhttp = new XMLHttpRequest();
         "contents": [
           {
             "type": "text",
-            "text": "บันทึกการเข้าปฏิบัติการ",
+            "text": desc,
             "color": "#ffffff66",
             "size": "sm"
           },
@@ -399,10 +399,16 @@ var xmlhttp = new XMLHttpRequest();
         ]
       },
       {
-        "type": "text",
-        "text": email,
-        "color": "#FEFCFC",
-        "offsetBottom": "2px"
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": uname,
+            "color": "#ffffff66",
+            "size": "sm"
+          }
+        ]
       }
     ],
     "paddingAll": "20px",
@@ -417,7 +423,7 @@ var xmlhttp = new XMLHttpRequest();
     "contents": [
       {
         "type": "text",
-        "text": "รายละเอียดการบันทึก",
+        "text": "บันทึกเข้าปฏิบัติการ",
         "color": "#b7b7b7",
         "size": "xs"
       },
@@ -427,11 +433,9 @@ var xmlhttp = new XMLHttpRequest();
         "contents": [
           {
             "type": "text",
-            "text": uname,
+            "text": time,
             "size": "sm",
-            "gravity": "center",
-            "margin": "none",
-            "maxLines": 1
+            "gravity": "center"
           },
           {
             "type": "box",
@@ -447,29 +451,26 @@ var xmlhttp = new XMLHttpRequest();
                 "cornerRadius": "30px",
                 "height": "12px",
                 "width": "12px",
-                "borderWidth": "2px",
-                "borderColor": "#0000ff"
+                "borderColor": "#EF454D",
+                "borderWidth": "2px"
               },
               {
                 "type": "filler"
               }
             ],
-            "flex": 0,
-            "borderColor": "#088F8F",
-            "offsetStart": "10%"
+            "flex": 0
           },
           {
             "type": "text",
-            "text": "บันทึกเข้าปฏิบัติการ",
+            "text": "ดำเนินการ",
             "gravity": "center",
             "flex": 4,
-            "size": "sm",
-            "offsetStart": "13%"
+            "size": "sm"
           }
         ],
         "spacing": "lg",
         "cornerRadius": "30px",
-        "margin": "lg"
+        "margin": "xl"
       },
       {
         "type": "box",
@@ -501,15 +502,13 @@ var xmlhttp = new XMLHttpRequest();
                     "layout": "vertical",
                     "contents": [],
                     "width": "2px",
-                    "backgroundColor": "#0000ff"
+                    "backgroundColor": "#009933"
                   },
                   {
                     "type": "filler"
                   }
                 ],
-                "flex": 1,
-                "spacing": "none",
-                "margin": "none"
+                "flex": 1
               }
             ],
             "width": "12px"
@@ -524,25 +523,17 @@ var xmlhttp = new XMLHttpRequest();
           }
         ],
         "spacing": "lg",
-        "height": "64px",
-        "offsetStart": "10%"
+        "height": "64px"
       },
       {
         "type": "box",
         "layout": "horizontal",
         "contents": [
           {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "text",
-                "text": "20:34",
-                "gravity": "center",
-                "size": "sm"
-              }
-            ],
-            "flex": 1
+            "type": "text",
+            "text": time,
+            "gravity": "center",
+            "size": "sm"
           },
           {
             "type": "box",
@@ -558,87 +549,30 @@ var xmlhttp = new XMLHttpRequest();
                 "cornerRadius": "30px",
                 "width": "12px",
                 "height": "12px",
-                "borderWidth": "3px",
-                "borderColor": "#ff0000"
+                "borderColor": "#6486E3",
+                "borderWidth": "2px"
               },
               {
                 "type": "filler"
               }
             ],
-            "flex": 0,
-            "offsetStart": "10%"
+            "flex": 0
           },
           {
             "type": "text",
-            "text": "บันทึกออกปฏิบัติการ",
+            "text": "Check-Out เรียบร้อย",
             "gravity": "center",
             "flex": 4,
-            "size": "sm",
-            "offsetStart": "13%"
+            "size": "sm"
           }
         ],
         "spacing": "lg",
         "cornerRadius": "30px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "2px",
-                    "backgroundColor": "#ff0000"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "flex": 1
-              }
-            ],
-            "width": "12px"
-          },
-          {
-            "type": "text",
-            "text": desc,
-            "gravity": "center",
-            "flex": 4,
-            "size": "xs",
-            "color": "#8c8c8c"
-          }
-        ],
-        "spacing": "lg",
-        "height": "64px",
-        "offsetStart": "10%"
       }
     ]
   }
 }
-        }
-
+     }
             ])
         //     alert("Message sent")
           }
