@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 13 </h4>      
+      <h4>ทดสอบ 14 </h4>      
 </center>
 
 <script>
@@ -73,7 +73,7 @@ var x = document.getElementById("demo");
 async function getLocationin() {
   if (navigator.geolocation) {
    await navigator.geolocation.getCurrentPosition(showPosition);
-     await sendMsg()
+         sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -150,11 +150,11 @@ var xmlhttp = new XMLHttpRequest();
 async function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
-  {
+   {
                     "type": "flex",
                     "altText": "Running",
                     "contents": 
-                                        {
+                    {
                       "type": "bubble",
                       "size": "mega",
                       "header": {
@@ -210,11 +210,9 @@ async function sendMsg() {
                             "contents": [
                               {
                                 "type": "text",
-                                "text": "yourtime",
-                                "size": "sm",
-                                "gravity": "center",
-                                "margin": "none",
-                                "maxLines": 1
+                                "text": "ทดสอบ 1",
+                                "size": "xs",
+                                "gravity": "center"
                               },
                               {
                                 "type": "box",
@@ -238,21 +236,19 @@ async function sendMsg() {
                                   }
                                 ],
                                 "flex": 0,
-                                "borderColor": "#088F8F",
-                                "offsetStart": "10%"
+                                "borderColor": "#088F8F"
                               },
                               {
                                 "type": "text",
                                 "text": "บันทึกเข้าปฏิบัติการ",
                                 "gravity": "center",
                                 "flex": 4,
-                                "size": "sm",
-                                "offsetStart": "13%"
+                                "size": "sm"
                               }
                             ],
                             "spacing": "lg",
                             "cornerRadius": "30px",
-                            "margin": "lg"
+                            "margin": "xl"
                           },
                           {
                             "type": "box",
@@ -290,16 +286,14 @@ async function sendMsg() {
                                         "type": "filler"
                                       }
                                     ],
-                                    "flex": 1,
-                                    "spacing": "none",
-                                    "margin": "none"
+                                    "flex": 1
                                   }
                                 ],
                                 "width": "12px"
                               },
                               {
                                 "type": "text",
-                                "text": "yourdate",
+                                "text": "ทดสอบ 2",
                                 "gravity": "center",
                                 "flex": 4,
                                 "size": "xs",
@@ -307,8 +301,7 @@ async function sendMsg() {
                               }
                             ],
                             "spacing": "lg",
-                            "height": "64px",
-                            "offsetStart": "10%"
+                            "height": "64px"
                           },
                           {
                             "type": "box",
@@ -320,7 +313,7 @@ async function sendMsg() {
                                 "contents": [
                                   {
                                     "type": "text",
-                                    "text": "20:34",
+                                    "text": ."ทดสอบ 3",
                                     "gravity": "center",
                                     "size": "sm"
                                   }
@@ -348,16 +341,14 @@ async function sendMsg() {
                                     "type": "filler"
                                   }
                                 ],
-                                "flex": 0,
-                                "offsetStart": "10%"
+                                "flex": 0
                               },
                               {
                                 "type": "text",
                                 "text": "บันทึกออกปฏิบัติการ",
                                 "gravity": "center",
                                 "flex": 4,
-                                "size": "sm",
-                                "offsetStart": "13%"
+                                "size": "sm"
                               }
                             ],
                             "spacing": "lg",
@@ -406,7 +397,7 @@ async function sendMsg() {
                               },
                               {
                                 "type": "text",
-                                "text": "สะรแบะเสบ่",
+                                "text": "ทดสอบ 4",
                                 "gravity": "center",
                                 "flex": 4,
                                 "size": "xs",
@@ -414,13 +405,12 @@ async function sendMsg() {
                               }
                             ],
                             "spacing": "lg",
-                            "height": "64px",
-                            "offsetStart": "10%"
+                            "height": "64px"
                           }
                         ]
                       }
-                    }
-{  
+                    }               
+                  }
       
     ])
 //     alert("Message sent")
