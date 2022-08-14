@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 24 </h4>      
+      <h4>ทดสอบ 25 </h4>      
 </center>
 
 <script>
@@ -145,7 +145,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsgout(email,uname,jsonResponse.desc,jsonResponse.date,jsonResponse.time) 
+          sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc) 
            }
         alert(jsonResponse.desc);
  
@@ -365,7 +365,7 @@ var xmlhttp = new XMLHttpRequest();
           }
         }
 
-  async function sendMsgout(uname,date,desc,time) {
+  async function sendMsgout(uname,date,time,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
                          { 
