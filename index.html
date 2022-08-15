@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 36 </h4>      
+      <h4>ทดสอบ 37 </h4>      
 </center>
 
 <script>
@@ -79,7 +79,7 @@ function getLocationin() {
   }
 }
 
-async function showPosition(position) {
+ function showPosition(position) {
 
  liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -102,7 +102,7 @@ async function showPosition(position) {
           var desc = jsonResponse.desc
           var date = jsonResponse.date
           var time = jsonResponse.time
-         await sendMsgin(uname,date,time,desc)
+          sendMsgin(uname,date,time,desc)
               }        
         alert(jsonResponse.desc);  
         liff.closeWindow();
