@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 31 </h4>      
+      <h4>ทดสอบ 32 </h4>      
 </center>
 
 <script>
@@ -29,7 +29,7 @@ window.onload = function() {
   initializeLiff('1657347394-mzWnoBaW');
 }
 
-const xurl = "https://script.google.com/macros/s/AKfycbz8Ye-Tm_B3yj1fVd67tAUUaxbL9YO5e0cJ9KORtCA6x_W4LB8hi4sL8zx58_I9mQUefQ/exec";
+const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
   
 function checks(){
 
@@ -99,10 +99,10 @@ function showPosition(position) {
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var jsonResponse = JSON.parse(this.responseText);
-          sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)  
+   
         }
-
-        alert(jsonResponse.desc);  
+        sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)  
+//         alert(jsonResponse.desc);  
         liff.closeWindow();
       }});  
 }
