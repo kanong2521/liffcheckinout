@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 6 </h4>      
+      <h4>ทดสอบ 7 </h4>      
 </center>
 
 <script>
@@ -98,11 +98,9 @@ var xmlhttp = new XMLHttpRequest();
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);
-         
+            var jsonResponse = JSON.parse(this.responseText);         
         }
         alert(jsonResponse.desc);
-//    sendMsg(jsonResponse.desc)  
         liff.closeWindow();
       }});  
 }
@@ -141,10 +139,9 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-
            }
         alert(jsonResponse.desc);
-//    sendMsg(jsonResponse.desc)  
+
         liff.closeWindow();
       }});  
 }
@@ -212,7 +209,7 @@ async function sendMsg(desc) {
 }
       
     ])
-//     alert("Message sent")
+    alert("Message sent")
   }
 }
 
