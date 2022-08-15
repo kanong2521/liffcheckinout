@@ -79,7 +79,7 @@ function getLocationin() {
   }
 }
 
-async function showPosition(position) {
+function showPosition(position) {
 
  liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -99,8 +99,9 @@ async function showPosition(position) {
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var jsonResponse = JSON.parse(this.responseText);
+          sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)  
         }
-     await sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)  
+
         alert(jsonResponse.desc);  
         liff.closeWindow();
       }});  
@@ -120,7 +121,7 @@ function getLocationOut() {
   }
 }
 
-async function showPositionOut(position) {
+function showPositionOut(position) {
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -139,8 +140,9 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
+                sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
            }
-        await sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)           
+   
         alert(jsonResponse.desc); 
         liff.closeWindow();
       }});  
