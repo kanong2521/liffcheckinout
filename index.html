@@ -73,7 +73,8 @@ var x = document.getElementById("demo");
  function getLocationin() {   
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-    
+    const myArr = JSON.parse(xurl);
+    console.log(myArr)
     sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
