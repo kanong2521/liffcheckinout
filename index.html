@@ -70,10 +70,11 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
- function getLocationin() {
+ function getLocationin() {   
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-
+    
+    sendMsg() 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -102,7 +103,7 @@ var xmlhttp = new XMLHttpRequest();
          
         }
         alert(jsonResponse.desc);
-   sendMsg(jsonResponse.desc)  
+//    sendMsg(jsonResponse.desc)  
         liff.closeWindow();
       }});  
 }
@@ -115,7 +116,7 @@ var xmlhttp = new XMLHttpRequest();
 function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
-             
+          sendMsg()        
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -144,16 +145,16 @@ var xmlhttp = new XMLHttpRequest();
 
            }
         alert(jsonResponse.desc);
-   sendMsg(jsonResponse.desc)  
+//    sendMsg(jsonResponse.desc)  
         liff.closeWindow();
       }});  
 }
-async function sendMsg(desc) {
+async function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
       {
         "type": "text",
-        "text": desc
+        "text": "Menu"
       }
     ])
 //     alert("Message sent")
