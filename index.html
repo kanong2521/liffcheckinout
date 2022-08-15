@@ -73,13 +73,7 @@ var x = document.getElementById("demo");
  function getLocationin() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-            sendMsg()    
-//        liff.sendMessages([
-//       {
-//         "type": "text",
-//         "text": "สรุปผลวิ่ง"
-//       }
-//     ])
+
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -108,7 +102,7 @@ var xmlhttp = new XMLHttpRequest();
          
         }
         alert(jsonResponse.desc);
-  
+   sendMsg(jsonResponse.desc)  
         liff.closeWindow();
       }});  
 }
@@ -121,7 +115,7 @@ var xmlhttp = new XMLHttpRequest();
 function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
-            sendMsg()    
+             
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -150,16 +144,16 @@ var xmlhttp = new XMLHttpRequest();
 
            }
         alert(jsonResponse.desc);
-  
+   sendMsg(jsonResponse.desc)  
         liff.closeWindow();
       }});  
 }
-async function sendMsg() {
+async function sendMsg(desc) {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
       {
         "type": "text",
-        "text": "Menu"
+        "text": desc
       }
     ])
 //     alert("Message sent")
