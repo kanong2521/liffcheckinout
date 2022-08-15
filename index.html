@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 14 </h4>      
+      <h4>ทดสอบ 15 </h4>      
 </center>
 
 <script>
@@ -101,7 +101,7 @@ var xmlhttp = new XMLHttpRequest();
             var jsonResponse = JSON.parse(this.responseText);     
             var desc = jsonResponse.desc
      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-    await liff.sendMessages([
+     liff.sendMessages([
 {
   "type": "flex",
   "altText": "สรุปผลวิ่ง",
