@@ -95,12 +95,11 @@ function getLocationin() {
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-//         xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var jsonResponse = JSON.parse(this.responseText);  
-
           sendMsgin(jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
-//               }        
+              }        
         alert(jsonResponse.desc);  
         liff.closeWindow();
       }
@@ -140,13 +139,12 @@ var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-//             xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse1 = JSON.parse(this.responseText);
-//                 sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
-//            }
-   
-        alert(jsonResponse1.desc); 
+            var jsonResponse = JSON.parse(this.responseText);
+                sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
+           }   
+        alert(jsonResponse.desc); 
         liff.closeWindow();
       }
      });  
