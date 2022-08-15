@@ -30,7 +30,7 @@ window.onload = function() {
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
-
+console.log(xurl)
 function checks(){
 
 var today = new Date();
@@ -73,8 +73,6 @@ var x = document.getElementById("demo");
  function getLocationin() {   
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-    const myArr = JSON.parse(xurl);
-    console.log(myArr)
     sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
