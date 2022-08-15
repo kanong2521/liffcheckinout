@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 37 </h4>      
+      <h4>ทดสอบ 1 </h4>      
 </center>
 
 <script>
@@ -73,6 +73,8 @@ var x = document.getElementById("demo");
 function getLocationin() {
   if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(showPosition);
+      var jsonResponse = JSON.parse(this.responseText);
+      sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
  
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
@@ -98,13 +100,11 @@ function getLocationin() {
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var jsonResponse = JSON.parse(this.responseText);  
-          var desc = jsonResponse.desc
-          var date = jsonResponse.date
-          var time = jsonResponse.time
-          sendMsgin(uname,date,time,desc)
+          var jsonResponse1 = JSON.parse(this.responseText);  
+
+//           sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
               }        
-        alert(jsonResponse.desc);  
+        alert(jsonResponse1.desc);  
         liff.closeWindow();
       }
       
@@ -120,7 +120,8 @@ function getLocationin() {
 function getLocationOut() {
   if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(showPositionOut);
-            
+    var jsonResponse = JSON.parse(this.responseText);
+    sendMsgout(jsonResponse.date,jsonResponse.time,jsonResponse.desc)              
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -144,15 +145,15 @@ var xmlhttp = new XMLHttpRequest();
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);
-                sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
+            var jsonResponse1 = JSON.parse(this.responseText);
+//                 sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
            }
    
-        alert(jsonResponse.desc); 
+        alert(jsonResponse1.desc); 
         liff.closeWindow();
       }});  
 }
-  async function sendMsgin(uname,date,time,desc) {
+  async function sendMsgin(date,time,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
            { 
@@ -191,7 +192,7 @@ var xmlhttp = new XMLHttpRequest();
         "contents": [
           {
             "type": "text",
-            "text": uname,
+            "text": "TEST",
             "color": "#ffffff66",
             "size": "sm"
           }
@@ -365,7 +366,7 @@ var xmlhttp = new XMLHttpRequest();
           }
         }
 
-  async function sendMsgout(uname,date,time,desc) {
+  async function sendMsgout(date,time,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
             await liff.sendMessages([
                          { 
@@ -404,7 +405,7 @@ var xmlhttp = new XMLHttpRequest();
         "contents": [
           {
             "type": "text",
-            "text": uname,
+            "text": "TEST",
             "color": "#ffffff66",
             "size": "sm"
           }
