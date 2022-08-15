@@ -73,9 +73,6 @@ var x = document.getElementById("demo");
 function getLocationin() {
   if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(showPosition);
-      var jsonResponse = JSON.parse(this.responseText);
-      sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
- 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -98,13 +95,13 @@ function getLocationin() {
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-        xmlhttp.onreadystatechange = function() {
+//         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var jsonResponse1 = JSON.parse(this.responseText);  
+          var jsonResponse = JSON.parse(this.responseText);  
 
-//           sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
-              }        
-        alert(jsonResponse1.desc);  
+          sendMsgin(jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
+//               }        
+        alert(jsonResponse.desc);  
         liff.closeWindow();
       }
       
@@ -143,15 +140,16 @@ var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-            xmlhttp.onreadystatechange = function() {
+//             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse1 = JSON.parse(this.responseText);
 //                 sendMsgout(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
-           }
+//            }
    
         alert(jsonResponse1.desc); 
         liff.closeWindow();
-      }});  
+      }
+     });  
 }
   async function sendMsgin(date,time,desc) {
           if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
