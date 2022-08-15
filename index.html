@@ -30,7 +30,7 @@ window.onload = function() {
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
-  
+
 function checks(){
 
 var today = new Date();
@@ -70,17 +70,24 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
-function getLocationin() {
+ function getLocationin() {
   if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition);
+            sendMsg()    
+//        liff.sendMessages([
+//       {
+//         "type": "text",
+//         "text": "สรุปผลวิ่ง"
+//       }
+//     ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
- function showPosition(position) {
+function showPosition(position) {
 
- liff.getProfile().then(function(profile) {
+     liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
@@ -91,21 +98,19 @@ function getLocationin() {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos+
   "<br>your Email: " + email;      
-        var xmlhttp = new XMLHttpRequest();
+var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-        xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var jsonResponse = JSON.parse(this.responseText);  
-          sendMsgin(jsonResponse.date,jsonResponse.time,jsonResponse.desc)    
-              }        
-        alert(jsonResponse.desc);  
-        liff.closeWindow();
-      }
-      
- }); 
+            var jsonResponse = JSON.parse(this.responseText);
+         
+        }
+        alert(jsonResponse.desc);
   
+        liff.closeWindow();
+      }});  
 }
 
 
@@ -115,15 +120,15 @@ function getLocationin() {
 
 function getLocationOut() {
   if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(showPositionOut);
-    var jsonResponse = JSON.parse(this.responseText);
-    sendMsgout(jsonResponse.date,jsonResponse.time,jsonResponse.desc)              
+    navigator.geolocation.getCurrentPosition(showPositionOut);
+            sendMsg()    
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
 function showPositionOut(position) {
+
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -139,441 +144,29 @@ var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-        xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-                sendMsgout(jsonResponse.date,jsonResponse.time,jsonResponse.desc)        
-           }   
-        alert(jsonResponse.desc); 
-        liff.closeWindow();
-      }
-     });  
-}
-  async function sendMsgin(date,time,desc) {
-          if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-            await liff.sendMessages([
-           { 
-"type": "flex",
-          "altText": "checkIn",
-          "contents": {            
-    "type": "bubble",
-  "size": "mega",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": desc,
-            "color": "#ffffff66",
-            "size": "sm"
-          },
-          {
-            "type": "text",
-            "text": "PA1 Lab",
-            "color": "#ffffff",
-            "size": "xl",
-            "flex": 4,
-            "weight": "bold"
-          }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "TEST",
-            "color": "#ffffff66",
-            "size": "sm"
-          }
-        ]
-      }
-    ],
-    "paddingAll": "20px",
-    "backgroundColor": "#0367D3",
-    "spacing": "md",
-    "height": "100px",
-    "paddingTop": "22px"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "บันทึกเข้าปฏิบัติการ",
-        "color": "#b7b7b7",
-        "size": "xs"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": time,
-            "size": "sm",
-            "gravity": "center"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "height": "12px",
-                "width": "12px",
-                "borderColor": "#EF454D",
-                "borderWidth": "2px"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0
-          },
-          {
-            "type": "text",
-            "text": "ดำเนินการ",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px",
-        "margin": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "2px",
-                    "backgroundColor": "#009933"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "flex": 1
-              }
-            ],
-            "width": "12px"
-          },
-          {
-            "type": "text",
-            "text": date,
-            "gravity": "center",
-            "flex": 4,
-            "size": "xs",
-            "color": "#8c8c8c"
-          }
-        ],
-        "spacing": "lg",
-        "height": "64px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": time,
-            "gravity": "center",
-            "size": "sm"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "width": "12px",
-                "height": "12px",
-                "borderColor": "#6486E3",
-                "borderWidth": "2px"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0
-          },
-          {
-            "type": "text",
-            "text": "Check-In เรียบร้อย",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px"
-      }
-    ]
-  }
-}
-     }
-            ])
-            alert("Message sent")
-          }
-        }
 
-  async function sendMsgout(date,time,desc) {
-          if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-            await liff.sendMessages([
-                         { 
-          "type": "flex",
-          "altText": "checkOut",
-          "contents": {            
-    "type": "bubble",
-  "size": "mega",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": desc,
-            "color": "#ffffff66",
-            "size": "sm"
-          },
-          {
-            "type": "text",
-            "text": "PA1 Lab",
-            "color": "#ffffff",
-            "size": "xl",
-            "flex": 4,
-            "weight": "bold"
-          }
-        ]
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "TEST",
-            "color": "#ffffff66",
-            "size": "sm"
-          }
-        ]
-      }
-    ],
-    "paddingAll": "20px",
-    "backgroundColor": "#0367D3",
-    "spacing": "md",
-    "height": "100px",
-    "paddingTop": "22px"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
+           }
+        alert(jsonResponse.desc);
+  
+        liff.closeWindow();
+      }});  
+}
+async function sendMsg() {
+  if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
+    await liff.sendMessages([
       {
         "type": "text",
-        "text": "บันทึกเข้าปฏิบัติการ",
-        "color": "#b7b7b7",
-        "size": "xs"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": time,
-            "size": "sm",
-            "gravity": "center"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "height": "12px",
-                "width": "12px",
-                "borderColor": "#EF454D",
-                "borderWidth": "2px"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0
-          },
-          {
-            "type": "text",
-            "text": "ดำเนินการ",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px",
-        "margin": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 1
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "filler"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [],
-                    "width": "2px",
-                    "backgroundColor": "#009933"
-                  },
-                  {
-                    "type": "filler"
-                  }
-                ],
-                "flex": 1
-              }
-            ],
-            "width": "12px"
-          },
-          {
-            "type": "text",
-            "text": date,
-            "gravity": "center",
-            "flex": 4,
-            "size": "xs",
-            "color": "#8c8c8c"
-          }
-        ],
-        "spacing": "lg",
-        "height": "64px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "text",
-            "text": time,
-            "gravity": "center",
-            "size": "sm"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "filler"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [],
-                "cornerRadius": "30px",
-                "width": "12px",
-                "height": "12px",
-                "borderColor": "#6486E3",
-                "borderWidth": "2px"
-              },
-              {
-                "type": "filler"
-              }
-            ],
-            "flex": 0
-          },
-          {
-            "type": "text",
-            "text": "Check-Out เรียบร้อย",
-            "gravity": "center",
-            "flex": 4,
-            "size": "sm"
-          }
-        ],
-        "spacing": "lg",
-        "cornerRadius": "30px"
+        "text": "Menu"
       }
-    ]
+    ])
+//     alert("Message sent")
   }
 }
-     }
-            ])
-            alert("Message sent")
-          }
-        }
+
+
 </script>
 
 
@@ -581,7 +174,7 @@ var xmlhttp = new XMLHttpRequest();
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script> -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
