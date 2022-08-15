@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 4 </h4>      
+      <h4>ทดสอบ 5 </h4>      
 </center>
 
 <script>
@@ -74,8 +74,8 @@ var x = document.getElementById("demo");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
     var msg = JSON.parse(xurl)
-    
-    sendMsg(msg.desc) 
+    var desc = msg.desc
+    sendMsg(desc) 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
