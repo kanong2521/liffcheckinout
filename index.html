@@ -73,8 +73,9 @@ var x = document.getElementById("demo");
  function getLocationin() {   
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+    var msg = JSON.parse(xurl)
     
-    sendMsg() 
+    sendMsg(msg.desc) 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -149,12 +150,12 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-async function sendMsg() {
+async function sendMsg(desc) {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
       {
         "type": "text",
-        "text": "Menu"
+        "text": desc
       }
     ])
 //     alert("Message sent")
