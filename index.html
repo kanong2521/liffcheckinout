@@ -98,14 +98,15 @@ function showPosition(position) {
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var jsonResponse = JSON.parse(this.responseText);   
+          var jsonResponse = JSON.parse(this.responseText);  
+          sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc) 
         }        
         alert(jsonResponse.desc);  
         liff.closeWindow();
       }
       
  }); 
-  sendMsgin(uname,jsonResponse.date,jsonResponse.time,jsonResponse.desc) 
+  
 }
 
 
