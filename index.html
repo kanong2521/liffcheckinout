@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 15 </h4>      
+      <h4>ทดสอบ 16 </h4>      
 </center>
 
 <script>
@@ -74,6 +74,7 @@ var x = document.getElementById("demo");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
     
+    sendMsg()
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -98,73 +99,8 @@ var xmlhttp = new XMLHttpRequest();
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var jsonResponse = JSON.parse(this.responseText);     
-            var desc = jsonResponse.desc
-     if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-     liff.sendMessages([
-{
-  "type": "flex",
-  "altText": "สรุปผลวิ่ง",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text":  desc,
-          "weight": "bold",
-          "size": "sm",
-          "contents": []
-        },
-        {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "margin": "lg",
-          "contents": [
-            {
-              "type": "button",
-              "action": {
-                "type": "uri",
-                "label": "ลงชื่อ ณ ปัจจุบัน",
-                "uri": "https://liff.line.me/1657347394-mzWnoBaW"
-              },
-              "style": "primary"
-            },
-            {
-              "type": "button",
-              "action": {
-                "type": "uri",
-                "label": "รายการลงชื่อทั้งหมด",
-                "uri": "https://liff.line.me/1657347394-mzWnoBaW"
-              },
-              "color": "#5138E2FF",
-              "style": "primary"
-            }
-          ]
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "flex": 0,
-      "spacing": "sm",
-      "contents": [
-        {
-          "type": "spacer",
-          "size": "sm"
-        }
-      ]
-    }
-  }
-}
-      
-    ])
-//     alert("Message sent")
-  }
+          var jsonResponse = JSON.parse(this.responseText);    
+         
         }
         alert(jsonResponse.desc);
         liff.closeWindow();
@@ -179,7 +115,7 @@ var xmlhttp = new XMLHttpRequest();
 function getLocationOut() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
-     
+     sendMsg() 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -212,12 +148,12 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-async function sendMsg(desc) {
+async function sendMsg() {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
 {
   "type": "flex",
-  "altText": "สรุปผลวิ่ง",
+  "altText": "Menu",
   "contents": {
     "type": "bubble",
     "body": {
@@ -226,7 +162,7 @@ async function sendMsg(desc) {
       "contents": [
         {
           "type": "text",
-          "text": desc,
+          "text": "บันทึก",
           "weight": "bold",
           "size": "xl",
           "contents": []
@@ -276,7 +212,7 @@ async function sendMsg(desc) {
 }
       
     ])
-    alert("Message sent")
+//     alert("Message sent")
   }
 }
 
