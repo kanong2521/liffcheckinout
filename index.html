@@ -21,7 +21,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 5 </h4>      
+      <h4>ทดสอบ 6 </h4>      
 </center>
 
 <script>
@@ -73,9 +73,7 @@ var x = document.getElementById("demo");
  function getLocationin() {   
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-    var msg = JSON.parse(xurl)
-    var desc = msg.desc
-    sendMsg(desc) 
+    sendMsg() 
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -153,10 +151,66 @@ var xmlhttp = new XMLHttpRequest();
 async function sendMsg(desc) {
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
-      {
-        "type": "text",
-        "text": desc
-      }
+{
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "บันทึกการลงชื่อ",
+          "weight": "bold",
+          "size": "xl",
+          "contents": []
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "sm",
+          "margin": "lg",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "ลงชื่อ ณ ปัจจุบัน",
+                "text": "ลงชื่อ"
+              },
+              "style": "primary"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "รายการลงชื่อทั้งหมด",
+                "text": "ลงชื่อทั้งหมด"
+              },
+              "color": "#5138E2FF",
+              "style": "primary"
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "flex": 0,
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "spacer",
+          "size": "sm"
+        }
+      ]
+    }
+  }
+}
+      
     ])
 //     alert("Message sent")
   }
