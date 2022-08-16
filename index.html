@@ -16,8 +16,8 @@
 <div class="btn-group col-12 mb-2">      
 <!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
   <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
-  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2" onclick="getLocationin()">Check-In</button>
-  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
+  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2 invisible" onclick="getLocationin()">Check-In</button>
+  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 invisible" onclick="getLocationOut()">Check-Out</button>
 </div>   
 
 <p id="demo"></p>
@@ -37,22 +37,22 @@ var today = new Date();
 today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
-//         if(hh <= 13 && mm <= 0){
+        if(hh <= 13 && mm <= 0){
           document.getElementById("cin").classList.remove('invisible');
-//         }else if(hh >= 17 && mm >= 0){
+        }else if(hh >= 17 && mm >= 0){
           document.getElementById("cout").classList.remove('invisible');
-//             }else{
-// alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
-// liff.closeWindow();  
-//             }
-//         if(hh <= 13 && mm <= 0){
-//           document.getElementById("cin").classList.remove('invisible');
-//         }else if(hh >= 17 && mm >= 0){
-//           document.getElementById("cout").classList.remove('invisible');
-//             }else{
-// alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
-// liff.closeWindow();  
-//             }
+            }else{
+alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+liff.closeWindow();  
+            }
+        if(hh <= 13 && mm <= 0){
+          document.getElementById("cin").classList.remove('invisible');
+        }else if(hh >= 17 && mm >= 0){
+          document.getElementById("cout").classList.remove('invisible');
+            }else{
+alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+liff.closeWindow();  
+            }
 }
 
 
