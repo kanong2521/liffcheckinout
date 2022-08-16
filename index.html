@@ -30,8 +30,7 @@ window.onload = function() {
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbLQ7H7aQdmtnojXov8gOlF1ri3qwum0kr8dsvfx2r7g/exec";
-const ar = JSON.parse(xurl)
-  console.log(xurl)
+
 function checks(){
 
 var today = new Date();
@@ -141,7 +140,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg(jsonResponse.desc) 
+          sendMsg() 
            }
         alert(jsonResponse.desc);
 
