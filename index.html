@@ -92,16 +92,18 @@ function showPosition(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos+
   "<br>your Email: " + email;      
-var xmlhttp = new XMLHttpRequest();
+        var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-            xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var jsonResponse = JSON.parse(this.responseText);    
-         
         }
         alert(jsonResponse.desc);
+          
+          
+          
         liff.closeWindow();
       }});  
 }
@@ -140,7 +142,7 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          sendMsg() 
+
            }
         alert(jsonResponse.desc);
 
