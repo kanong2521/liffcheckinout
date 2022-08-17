@@ -70,8 +70,11 @@
     </div>
     
 <script>
-
-    function loadingStart(){
+    $(window).bind("load", function () {
+        $('#loading').addClass('invisible');
+    });
+  
+  function loadingStart(){
         $('#loading').show();   
     }
 
