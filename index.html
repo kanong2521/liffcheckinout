@@ -165,15 +165,15 @@ function initializeLiff(myLiffId) {
 var x = document.getElementById("demo");
 
  function getLocationin() {   
-   loadingStart()
+
   if (navigator.geolocation) {
     
     navigator.geolocation.getCurrentPosition(showPosition);
     sendMsg()
-    loadingEnd()
+
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
-    loadingEnd()
+
   }
 }
 
@@ -214,14 +214,14 @@ function showPosition(position) {
 
 
 function getLocationOut() {
-   loadingStart()
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
      sendMsg() 
-    loadingEnd()
+
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
-    loadingEnd()
+
   }
 }
 
