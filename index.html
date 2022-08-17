@@ -11,7 +11,7 @@
     
     <!--  The library files jquery@3.6.0 ----- --> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-       <style>
+    <style>
            #loading{
         position :fixed;
         top:0;
@@ -40,17 +40,15 @@
       @keyframes rotate {
       100% {transform: rotate(360deg);}
       } 
-    </style>  
+  </style>  
   <title>ระบบทดสอบ</title>
   </head>
   <body>
     <center>
     <h1>Check-In/Out Log</h1>
 <div class="btn-group col-12 mb-2">      
-<!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
-  <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-3  rounded text-white pl-2 " onclick="getLocationin()">Check-In</button></div>
-   <div id="cout" class="invisible"><button  type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button></div>
+  <div id="cout" class="invisible"><button  type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button></div>
 </div>   
 
 <p id="demo"></p>
@@ -70,10 +68,8 @@
         </div>
       </div> 
     </div>
-
-    $(window).bind("load", function () {
-        $('#loading').hide();
-    });
+    
+<script>
 
     function loadingStart(){
         $('#loading').show();   
