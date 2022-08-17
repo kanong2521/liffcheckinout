@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 3 </h4>      
+      <h4>ทดสอบ 4 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -137,7 +137,13 @@ if(dtNow.getTime() >= dtOpen.getTime() && dtNow.getTime() <= dtClose.getTime()){
           showConfirmButton: false,
           timer: 1500
         })
-//   alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 ");
+   alert(Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'นอกช่วงเวลาลงชื่อ<br>หากพบปัญหาโปรดติดต่อ<br>เจ้าของปฏิบัติการ',
+          showConfirmButton: false,
+          timer: 1500
+        }));
 //   liff.closeWindow();  
         liff.closeWindow();  
     }
