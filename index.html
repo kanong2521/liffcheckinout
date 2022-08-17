@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 24 </h4>      
+      <h4>ทดสอบ 25 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center " style="display:none">
@@ -70,7 +70,9 @@
     </div>
     
 <script>
-  
+  $(window).bind("load", function () {
+        $('#loading').hide();
+    });  
   function loadingStart(){
         $('#loading').show();   
     }
@@ -313,7 +315,7 @@ async function sendMsg() {
 }
 
 
-<script>
+</script>
 
 
 
