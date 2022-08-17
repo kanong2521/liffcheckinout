@@ -55,7 +55,7 @@
       <h4>ทดสอบ 25 </h4>      
 </center>
 
-    <div id="loading" class="d-flex justify-content-center  align-items-center " style= "display: none;">
+    <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
       <div id="circle">
         <div class="loader">
           <div class="loader">
@@ -70,15 +70,16 @@
     </div>
     
 <script>
-  $(window).bind("load", function () {
-        $('#loading').hide();
-    });  
-  function loadingStart(){
-        $('#loading').show();   
+    $(window).bind("load", function () {
+        $('#loading').addClass('invisible');
+    });
+
+    function loadingStart(){
+        $('#loading').removeClass('invisible');   
     }
 
     function loadingEnd(){
-        $('#loading').hide();   
+        $('#loading').addClass('invisible');   
     }
 window.onload = function() {
   initializeLiff('1657347394-mzWnoBaW');
