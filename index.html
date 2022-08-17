@@ -179,7 +179,7 @@ loadingStart()
 }
 
 function showPosition(position) {
-loadingEnd()
+
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -201,7 +201,7 @@ loadingEnd()
         
           var jsonResponse = JSON.parse(this.responseText);    
         }
-           
+         loadingEnd()  
         alert(jsonResponse.desc);
           
           
@@ -228,7 +228,6 @@ function getLocationOut() {
 }
 
 function showPositionOut(position) {
-loadingEnd()
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -249,7 +248,7 @@ var xmlhttp = new XMLHttpRequest();
             var jsonResponse = JSON.parse(this.responseText);
           
            }
-    
+        loadingEnd()
         alert(jsonResponse.desc);
 
         liff.closeWindow();
