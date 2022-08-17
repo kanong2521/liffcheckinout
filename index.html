@@ -47,12 +47,12 @@
     <center>
     <h1>Check-In/Out Log</h1>
 <div class="btn-group col-12 mb-2">      
-  <div id="cin" class="invisible mx-auto" ><button type="button" class="btn btn-success mx-3  rounded text-white pl-2 " onclick="getLocationin()">Check-In</button></div>
-  <div id="cout" class="invisible mx-auto"><button  type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button></div>
+  <div id="cin" class="invisible mx-3 pl-2" ><button type="button" class="btn btn-success mx-3  rounded text-white" onclick="getLocationin()">Check-In</button></div>
+  <div id="cout" class="invisible mx-3 pl-2"><button  type="button" class="btn btn-danger mx-3 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 34 </h4>      
+      <h4>ทดสอบ 35 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -134,8 +134,8 @@ function checks(){
   console.log(dtClose.getTime())
 
 if(dtNow.getTime() >= dtOpen.getTime() && dtNow.getTime() <= dtClose.getTime()){ 
-//  document.getElementById("cin").classList.remove('invisible');
-//  document.getElementById("cout").classList.remove('invisible');
+ document.getElementById("cin").classList.remove('invisible');
+ document.getElementById("cout").classList.remove('invisible');
 }else{
 /** แสดงค่าเมื่ออยู่นอกเวลาที่กำหนด */  
       event.preventDefault();
