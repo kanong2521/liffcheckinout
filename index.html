@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 38 </h4>      
+      <h4>ทดสอบ 39 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -131,14 +131,16 @@ if(dtNow.getTime() >= dtOpen.getTime() && dtNow.getTime() <= dtClose.getTime()){
  document.getElementById("cout").classList.remove('invisible');
 }else{
 /** แสดงค่าเมื่ออยู่นอกเวลาที่กำหนด */  
-      event.preventDefault();
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'นอกช่วงเวลาลงชื่อ<br>หากพบปัญหาโปรดติดต่อ<br>เจ้าของปฏิบัติการ',
-          showConfirmButton: false,
-          timer: 1500
-        })
+//       event.preventDefault();
+//         Swal.fire({
+//           position: 'center',
+//           icon: 'error',
+//           title: 'นอกช่วงเวลาลงชื่อ<br>หากพบปัญหาโปรดติดต่อ<br>เจ้าของปฏิบัติการ',
+//           showConfirmButton: false,
+//           timer: 1500
+//         })
+  alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+// liff.closeWindow();  
         liff.closeWindow();  
     }
    
