@@ -166,7 +166,7 @@ function initializeLiff(myLiffId) {
 var x = document.getElementById("demo");
 
  function getLocationin() {   
-
+loadingStart()
   if (navigator.geolocation) {
     
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -179,7 +179,7 @@ var x = document.getElementById("demo");
 }
 
 function showPosition(position) {
- loadingStart()
+loadingEnd()
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -195,6 +195,7 @@ function showPosition(position) {
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
+
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         
@@ -227,7 +228,7 @@ function getLocationOut() {
 }
 
 function showPositionOut(position) {
-
+loadingEnd()
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
