@@ -194,9 +194,10 @@ function showPosition(position) {
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-         loadingEnd()
+        
           var jsonResponse = JSON.parse(this.responseText);    
         }
+           loadingEnd()
         alert(jsonResponse.desc);
           
           
@@ -240,8 +241,9 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-            loadingEnd()
+          
            }
+          loadingEnd()      
         alert(jsonResponse.desc);
 
         liff.closeWindow();
