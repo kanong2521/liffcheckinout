@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 28 </h4>      
+      <h4>ทดสอบ 29 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -179,7 +179,7 @@ var x = document.getElementById("demo");
 }
 
 function showPosition(position) {
-
+ loadingStart()
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -215,7 +215,7 @@ function showPosition(position) {
 
 
 function getLocationOut() {
-
+ loadingStart()
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
      sendMsg() 
