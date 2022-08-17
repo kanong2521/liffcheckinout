@@ -16,8 +16,8 @@
 <div class="btn-group col-12 mb-2">      
 <!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
   <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
-  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2 invisible" onclick="getLocationin()">Check-In</button>
-  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 invisible" onclick="getLocationOut()">Check-Out</button>
+  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2 " onclick="getLocationin()">Check-In</button>
+  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
 </div>   
 
 <p id="demo"></p>
@@ -33,26 +33,79 @@ const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbL
 
 function checks(){
 
-var today = new Date();
-today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-var hh = today.getHours();
-var mm = today.getMinutes(); 
-        if(hh <= 13 && mm <= 0){
-          document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 17 && mm >= 0){
-          document.getElementById("cout").classList.remove('invisible');
-            }else{
-alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
-liff.closeWindow();  
-            }
-        if(hh <= 13 && mm <= 0){
-          document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 17 && mm >= 0){
-          document.getElementById("cout").classList.remove('invisible');
-            }else{
-alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
-liff.closeWindow();  
-            }
+// var today = new Date();
+// today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+// var hh = today.getHours();
+// var mm = today.getMinutes(); 
+//         if(hh <= 13 && mm <= 0){
+//           document.getElementById("cin").classList.remove('invisible');
+//         }else if(hh >= 17 && mm >= 0){
+//           document.getElementById("cout").classList.remove('invisible');
+//             }else{
+// alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+// liff.closeWindow();  
+//             }
+//         if(hh <= 13 && mm <= 0){
+//           document.getElementById("cin").classList.remove('invisible');
+//         }else if(hh >= 17 && mm >= 0){
+//           document.getElementById("cout").classList.remove('invisible');
+//             }else{
+// alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+// liff.closeWindow();  
+//             }
+  
+                                              
+/** ตัวแปรของวันที่ปัจจุบัน เก็บในรูปแบบจำนวนนับเวลา เพื่อใช้เปรียบเทียบ*/
+  // Date time variables
+  var dtNow;       // Now
+  var dtOpen;    //  Open
+  var dtClose;   // Close
+
+
+ /** รับค่าจากฝั่ง html */       
+        var openH1 = 7
+        var openM1 = 30 
+        var openS1 = 00
+        var closeH1 = 7
+        var closeM1 = 45
+        var closeS1 = 59
+/**รูปแบบ new Date(year, month, day, hours, minutes, seconds, milliseconds) */
+  dtNow = new Date();
+  dtNow.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+  console.log(dtNow.getTime())
+  dtOpen = new Date(dtNow.getFullYear(), dtNow.getMonth(), dtNow.getDate(), openH1, openM1, openS1);
+  console.log(dtOpen.getTime())
+  dtClose = new Date(dtNow.getFullYear(), dtNow.getMonth(), dtNow.getDate(), closeH1, closeM1, closeS1);
+  console.log(dtClose.getTime())
+
+if(dtNow.getTime() >= dtOpen.getTime() && dtNow.getTime() <= dtClose.getTime()){ 
+ document.getElementById("cin").classList.remove('invisible');
+ document.getElementById("cout").classList.remove('invisible');
+}else{
+/** แสดงค่าเมื่ออยู่นอกเวลาที่กำหนด */  
+      event.preventDefault();
+            // $('#message').html('นอกช่วงเวลา Quiz <br>หากพบปัญหาโปรดแจ้ง<br>อาจารย์เจ้าของปฏิบัติการ');
+            // document.getElementById('message').className = 'alert alert-warning text-danger';
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'นอกช่วงเวลา Quiz <br>หากพบปัญหาโปรดติดต่อ<br>เจ้าของปฏิบัติการ',
+          showConfirmButton: false,
+          timer: 1500
+        })
+    }
+}        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 
