@@ -47,8 +47,8 @@
     <center>
     <h1>Check-In/Out Log</h1>
 <div class="btn-group col-12 mb-2">      
-  <div id="cin" class=" mx-auto pl-2 w-100 invisible" ><button type="button" class="btn btn-success rounded text-white w-100" onclick="getLocationin()">Check-In</button></div>
-<!--   <div id="cout" class="mx-auto pl-2 invisible"><button  type="button" class="btn btn-danger rounded text-white" onclick="getLocationOut()">Check-Out</button></div> -->
+  <div id="cin" class=" mx-auto px-2 w-100 invisible" ><button type="button" class="btn btn-success rounded text-white w-100" onclick="getLocationin()">Check-In</button></div>
+<!--   <div id="cout" class="mx-auto px-2 invisible"><button  type="button" class="btn btn-danger rounded text-white" onclick="getLocationOut()">Check-Out</button></div> -->
 </div>   
 
 <p id="demo"></p>
@@ -258,7 +258,7 @@ async function sendMsg() {
       var hh = now.getHours();
       var mm = now.getMinutes(); 
       var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
-      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" "+hh+":"+mm+" น." ;
+      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" เวลา "+hh+":"+mm+" น." ;
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
 {
@@ -272,7 +272,7 @@ async function sendMsg() {
       "contents": [
         {
           "type": "text",
-          "text": "บันทึก "+datenew,
+          "text": datenew,
           "weight": "bold",
           "size": "sm",
           "contents": []
