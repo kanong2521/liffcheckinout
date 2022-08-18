@@ -47,7 +47,7 @@
     <center>
     <h1>Check-In/Out Log</h1>
 <div class="btn-group col-12 mb-2">      
-  <div id="cin" class=" mx-auto pl-2  invisible" ><button type="button" class="btn btn-success rounded text-white w-100" onclick="getLocationin()">Check-In</button></div>
+  <div id="cin" class=" mx-auto pl-2 w-100 invisible" ><button type="button" class="btn btn-success rounded text-white w-100" onclick="getLocationin()">Check-In</button></div>
 <!--   <div id="cout" class="mx-auto pl-2 invisible"><button  type="button" class="btn btn-danger rounded text-white" onclick="getLocationOut()">Check-Out</button></div> -->
 </div>   
 
@@ -255,9 +255,10 @@ async function sendMsg() {
       var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
       "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
       "ตุลาคม","พฤศจิกายน","ธันวาคม");
-
+      var hh = now.getHours();
+      var mm = now.getMinutes(); 
       var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
-      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543);
+      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" "+hh+":"+mm+" น." ;
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
 {
