@@ -249,6 +249,15 @@ var xmlhttp = new XMLHttpRequest();
       }});  
 }
 async function sendMsg() {
+      now = new Date();
+      var thday = new Array ("อาทิตย์","จันทร์",
+      "อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์");
+      var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
+      "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
+      "ตุลาคม","พฤศจิกายน","ธันวาคม");
+
+      var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
+      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543);
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
 {
@@ -262,7 +271,7 @@ async function sendMsg() {
       "contents": [
         {
           "type": "text",
-          "text": "บันทึก",
+          "text": "บันทึก "+datenew,
           "weight": "bold",
           "size": "xl",
           "contents": []
