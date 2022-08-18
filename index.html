@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 8 </h4>      
+      <h4>ทดสอบ 9 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -179,12 +179,12 @@ function showPosition(position) {
             var uname = profile.displayName;
         var xos = liff.getOS();
         var email = liff.getDecodedIDToken().email;
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos+
-  "<br>your Email: " + email;      
+//   x.innerHTML = "Lat: " + position.coords.latitude + 
+//   "<br>Long: " + position.coords.longitude+ 
+//   "<br>userId: " + uid+ 
+//   "<br>displayName: " + uname+
+//   "<br>your OS: " + xos+
+//   "<br>your Email: " + email;      
         var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
