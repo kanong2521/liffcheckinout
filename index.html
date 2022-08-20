@@ -241,8 +241,8 @@ async function sendMsg() {
       var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
       "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
       "ตุลาคม","พฤศจิกายน","ธันวาคม");
-      var hh = now.getHours();
-      var mm = now.getMinutes(); 
+      var hh = String(date.getHours()).padStart(2, "0");
+      var mm = String(now.getMinutes()).padStart(2, "0");
       var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
       thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" เวลา "+hh+":"+mm+" น." ;
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
