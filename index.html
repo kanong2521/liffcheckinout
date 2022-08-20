@@ -52,7 +52,7 @@
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 12 </h4>      
+      <h4>ทดสอบ 11 </h4>      
 </center>
 
     <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
@@ -162,45 +162,59 @@ var x = document.getElementById("demo");
  function getLocationin() {   
 loadingStart()
   if (navigator.geolocation) {
+    
     navigator.geolocation.getCurrentPosition(showPosition);
     sendMsg()
+
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
+
   }
 }
 
 function showPosition(position) {
+
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
         var email = liff.getDecodedIDToken().email;
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos+
-  "<br>your Email: " + email;      
+//   x.innerHTML = "Lat: " + position.coords.latitude + 
+//   "<br>Long: " + position.coords.longitude+ 
+//   "<br>userId: " + uid+ 
+//   "<br>displayName: " + uname+
+//   "<br>your OS: " + xos+
+//   "<br>your Email: " + email;      
         var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
 
         xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {        
+        if (this.readyState == 4 && this.status == 200) {
+        
           var jsonResponse = JSON.parse(this.responseText);    
         }
-       loadingEnd()  
-        alert(jsonResponse.desc);   
+         loadingEnd()  
+        alert(jsonResponse.desc);
+          
+          
+          
         liff.closeWindow();
       }});  
 }
+
+
+
+///////////////////////////////
+
 
 function getLocationOut() {
  loadingStart()
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
      sendMsg() 
+
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
 
@@ -241,8 +255,8 @@ async function sendMsg() {
       var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
       "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
       "ตุลาคม","พฤศจิกายน","ธันวาคม");
-      var hh = String(date.getHours()).padStart(2, "0");
-      var mm = String(now.getMinutes()).padStart(2, "0");
+      var hh = now.getHours();
+      var mm = now.getMinutes(); 
       var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
       thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" เวลา "+hh+":"+mm+" น." ;
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
