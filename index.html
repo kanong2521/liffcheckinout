@@ -6,82 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">    
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <!--  The library files jquery@3.6.0 ----- --> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-           #loading{
-        position :fixed;
-        top:0;
-        left:0;
-        z-index:1000;
-        background-color :rgba(250,250,250,0.85);
-        height:100vh;
-        width:100vw;
-      }
-      #circle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 100px;
-        height: 100px;	
-      }
-      .loader {
-        width: calc(100% - 0px);
-        height: calc(100% - 0px);
-        border: 8px solid rgba(250,250,250,0.2);
-        border-top: 8px solid #09f;
-        border-radius: 50%;
-        animation: rotate 5s linear infinite;
-      }
-      @keyframes rotate {
-      100% {transform: rotate(360deg);}
-      } 
-  </style>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
   <title>ระบบทดสอบ</title>
   </head>
   <body>
     <center>
     <h1>Check-In/Out Log</h1>
 <div class="btn-group col-12 mb-2">      
-  <div id="cin" class=" mx-auto px-2 w-100 invisible" ><button type="button" class="btn btn-success rounded text-white w-100" onclick="getLocationin()">Check-In</button></div>
-<!--   <div id="cout" class="mx-auto px-2 invisible"><button  type="button" class="btn btn-danger rounded text-white" onclick="getLocationOut()">Check-Out</button></div> -->
+<!--   <div id="cin" class="invisible" ><button type="button" class="btn btn-success mx-auto mt-2 rounded text-white" onclick="getLocationin()">Check-In</button></div>
+  <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger mx-auto mt-2 rounded text-white" onclick="getLocationOut()">Check-Out</button></div>       -->
+  <button id="cin" type="button" class="btn btn-success mx-3  rounded text-white pl-2" onclick="getLocationin()">Check-In</button>
+  <button id="cout" type="button" class="btn btn-danger mx-3 rounded text-white pl-2 " onclick="getLocationOut()">Check-Out</button>
 </div>   
 
 <p id="demo"></p>
-      <h4>ทดสอบ 11 </h4>      
+      <h4>ทดสอบ 2 </h4>      
 </center>
 
-    <div id="loading" class="d-flex justify-content-center  align-items-center invisible" >
-      <div id="circle">
-        <div class="loader">
-          <div class="loader">
-            <div class="loader">
-              <div class="loader">
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-    
 <script>
-    $(window).bind("load", function () {
-        $('#loading').addClass('invisible');
-      initializeLiff('1657347394-mzWnoBaW');
-    });
-
-    function loadingStart(){
-        $('#loading').removeClass('invisible');   
-    }
-
-    function loadingEnd(){
-        $('#loading').addClass('invisible');   
-    }
 window.onload = function() {
   initializeLiff('1657347394-mzWnoBaW');
 }
@@ -90,58 +33,26 @@ const xurl = "https://script.google.com/macros/s/AKfycbzt5FXclz6dhtdQm5sTnh0cVbL
 
 function checks(){
 
-// var today = new Date();
-// today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-// var hh = today.getHours();
-// var mm = today.getMinutes(); 
-//         if(hh <= 13){
+var today = new Date();
+today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+var hh = today.getHours();
+var mm = today.getMinutes(); 
+//         if(hh <= 13 && mm <= 0){
+          document.getElementById("cin").classList.remove('invisible');
+//         }else if(hh >= 17 && mm >= 0){
+          document.getElementById("cout").classList.remove('invisible');
+//             }else{
+// alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
+// liff.closeWindow();  
+//             }
+//         if(hh <= 13 && mm <= 0){
 //           document.getElementById("cin").classList.remove('invisible');
-//         }else if(hh >= 15){
+//         }else if(hh >= 17 && mm >= 0){
 //           document.getElementById("cout").classList.remove('invisible');
 //             }else{
 // alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
 // liff.closeWindow();  
 //             }
-// }
-  
-
-  // Date time variables
-  var dtNow;      
-  var dtOpen;    
-  var dtClose;   
-
-   
-        var openH1 = 5
-        var openM1 = 30 
-        var openS1 = 0
-        var closeH1 = 23
-        var closeM1 = 10
-        var closeS1 = 59
-
-  dtNow = new Date();
-  dtNow.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-  console.log(dtNow.getTime())
-  dtOpen = new Date(dtNow.getFullYear(), dtNow.getMonth(), dtNow.getDate(), openH1, openM1, openS1);
-  console.log(dtOpen.getTime())
-  dtClose = new Date(dtNow.getFullYear(), dtNow.getMonth(), dtNow.getDate(), closeH1, closeM1, closeS1);
-  console.log(dtClose.getTime())
-
-if(dtNow.getTime() >= dtOpen.getTime() && dtNow.getTime() <= dtClose.getTime()){ 
- document.getElementById("cin").classList.remove('invisible');
- document.getElementById("cout").classList.remove('invisible');
-}else{
-//         Swal.fire({
-//           position: 'center',
-//           icon: 'error',
-//           title: 'นอกช่วงเวลาลงชื่อ<br>หากพบปัญหาโปรดติดต่อ<br>เจ้าของปฏิบัติการ',
-//           showConfirmButton: false,
-//           timer: 1500
-//         })
-   alert("ขณะนี้อยู่นอกช่วงเวลาการลงชื่อ");
-//   liff.closeWindow();  
-        liff.closeWindow();  
-    }
-   
 }
 
 
@@ -159,16 +70,18 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 
- function getLocationin() {   
-loadingStart()
+ function getLocationin() {
   if (navigator.geolocation) {
-    
     navigator.geolocation.getCurrentPosition(showPosition);
-    sendMsg()
-
+            sendMsg()    
+//        liff.sendMessages([
+//       {
+//         "type": "text",
+//         "text": "สรุปผลวิ่ง"
+//       }
+//     ])
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
-
   }
 }
 
@@ -179,27 +92,23 @@ function showPosition(position) {
             var uname = profile.displayName;
         var xos = liff.getOS();
         var email = liff.getDecodedIDToken().email;
-//   x.innerHTML = "Lat: " + position.coords.latitude + 
-//   "<br>Long: " + position.coords.longitude+ 
-//   "<br>userId: " + uid+ 
-//   "<br>displayName: " + uname+
-//   "<br>your OS: " + xos+
-//   "<br>your Email: " + email;      
-        var xmlhttp = new XMLHttpRequest();
+  x.innerHTML = "Lat: " + position.coords.latitude + 
+  "<br>Long: " + position.coords.longitude+ 
+  "<br>userId: " + uid+ 
+  "<br>displayName: " + uname+
+  "<br>your OS: " + xos+
+  "<br>your Email: " + email;      
+var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&email="+email+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
-
-        xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        
-          var jsonResponse = JSON.parse(this.responseText);    
+            var jsonResponse = JSON.parse(this.responseText);
+         
         }
-         loadingEnd()  
         alert(jsonResponse.desc);
-          
-          
-          
+  
         liff.closeWindow();
       }});  
 }
@@ -210,18 +119,16 @@ function showPosition(position) {
 
 
 function getLocationOut() {
- loadingStart()
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPositionOut);
-     sendMsg() 
-
+            sendMsg()    
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
-
   }
 }
 
 function showPositionOut(position) {
+
      liff.getProfile().then(function(profile) {
         var uid = profile.userId;
         var uname = profile.displayName;
@@ -240,87 +147,20 @@ var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
-          
-           }
-        loadingEnd()
-        alert(jsonResponse.desc);
 
+           }
+        alert(jsonResponse.desc);
+  
         liff.closeWindow();
       }});  
 }
 async function sendMsg() {
-      now = new Date();
-      var thday = new Array ("อาทิตย์","จันทร์",
-      "อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์");
-      var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
-      "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
-      "ตุลาคม","พฤศจิกายน","ธันวาคม");
-      var hh = now.getHours();
-      var mm = now.getMinutes(); 
-      var datenew = "วัน" + thday[now.getDay()]+ "ที่ "+ now.getDate()+ " " +
-      thmonth[now.getMonth()]+ " " + (now.getFullYear()+543)+" เวลา "+hh+":"+mm+" น." ;
   if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
     await liff.sendMessages([
-{
-  "type": "flex",
-  "altText": "Menu",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": datenew,
-          "weight": "bold",
-          "size": "sm",
-          "contents": []
-        },
-        {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "margin": "lg",
-          "contents": [
-            {
-              "type": "button",
-              "action": {
-                "type": "uri",
-                "label": "ลงชื่อ ณ ปัจจุบัน",
-                "uri": "https://liff.line.me/1657347394-mzWnoBaW"
-              },
-              "style": "primary"
-            },
-            {
-              "type": "button",
-              "action": {
-                "type": "uri",
-                "label": "รายการลงชื่อทั้งหมด",
-                "uri": "https://liff.line.me/1657347394-zpkaERNk"
-              },
-              "color": "#5138E2FF",
-              "style": "primary"
-            }
-          ]
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "flex": 0,
-      "spacing": "sm",
-      "contents": [
-        {
-          "type": "spacer",
-          "size": "sm"
-        }
-      ]
-    }
-  }
-}
-      
+      {
+        "type": "text",
+        "text": "สรุปผลวิ่ง"
+      }
     ])
 //     alert("Message sent")
   }
@@ -338,6 +178,6 @@ async function sendMsg() {
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>
